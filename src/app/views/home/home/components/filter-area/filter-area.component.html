@@ -1,0 +1,14 @@
+<article>
+    <div class="example-button-container" (click)="onAddItemClick()">
+
+        <div class="add" >     
+                <i class="fa-solid fa-plus" style="color: #0308ff;"></i> <p>Add</p>        
+        </div> 
+    </div>
+    <div>
+        <label>
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+        <input type="text" placeholder="search users" (keyup)="onSearch($event)">
+    </div>
+</article>

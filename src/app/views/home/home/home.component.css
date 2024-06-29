@@ -1,0 +1,17 @@
+section {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.table {
+    width: 68%;
+}
+
+.form-area {
+    width: 28%
+}
+
+.full-width {
+    width: 100%;
+}

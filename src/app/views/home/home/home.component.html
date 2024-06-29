@@ -1,0 +1,30 @@
+<!-- <section>
+    <article>
+        <app-filter-area (formAlertIsVisibleChange)="formAlertIsVisibal = $event" (search)="searchingData = $event"></app-filter-area>
+    </article>
+    
+    <article>
+        <aside>
+            <app-list-area #listArea [searchingData]="searchingData" (deleteUser)="deleteUser($event)" (updateUser)="updateUserAlert($event)"></app-list-area>
+        </aside>
+
+        <aside *ngIf="formAlertIsVisibal">
+            <app-form-area [userUpdateData]="user" (formAlertIsVisibleChange)="canselAlert($event)" (registerUpdate)="addUser($event)"></app-form-area>
+        </aside>
+    </article>
+</section> -->
+
+
+<section>
+    <article class="table" [ngClass]="formAlertIsVisibal ? 'table' : 'full-width'">
+        <aside>
+            <app-filter-area (formAlertIsVisibleChange)="formAlertIsVisibal = $event" (search)="searchingData = $event"></app-filter-area>
+        </aside>
+        <aside>
+            <app-list-area #listArea [searchingData]="searchingData" (deleteUser)="deleteUser($event)" (updateUser)="updateUserAlert($event)"></app-list-area>
+        </aside>
+    </article>
+    <aside *ngIf="formAlertIsVisibal" class="form-area">
+        <app-form-area [userUpdateData]="user" (formAlertIsVisibleChange)="canselAlert($event)" (registerUpdate)="addUser($event)"></app-form-area>
+    </aside>
+</section>

@@ -1,0 +1,92 @@
+<section>
+    <div class="close" (click)="onCancel()">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+        <div class="input-container">
+            <label for="firstName">First Name</label>
+            <div class="example-input input-max-width" 
+                 [ngClass]="{'brd-red': formValidationService.checkBaseValue(userForm, 'firstName') != 0}">
+              <input type="text" id="firstName" name="firstName" class="input-max-width"
+                     [(ngModel)]="userUpdateData.firstName" required pattern="[a-zA-Z ]+">
+            </div>
+            <app-error-message
+              [errorMessage]="formValidationService.checkBaseValue(userForm, 'firstName') === 1 ? 'First name is required.' : ''">
+            </app-error-message>
+            <app-error-message
+              [errorMessage]="formValidationService.checkBaseValue(userForm, 'firstName') === 3 ? 'First name must contain only symbols.' : ''">
+            </app-error-message>
+          </div>
+
+        <div class="input-container">
+            <label for="lastName">Last Name</label>
+            <div class="example-input input-max-width"
+            [ngClass]="{'brd-red':  formValidationService.checkBaseValue(userForm, 'lastName') != 0}">
+                <input type="text" id="lastName" name="lastName" class="input-max-width"
+                    [(ngModel)]="userUpdateData.lastName" required pattern="[a-zA-Z ]+">
+            </div>
+
+            <app-error-message
+              [errorMessage]="formValidationService.checkBaseValue(userForm, 'lastName') === 1 ? 'Last name is required.' : ''">
+            </app-error-message>
+            <app-error-message
+              [errorMessage]="formValidationService.checkBaseValue(userForm, 'lastName') === 3 ? 'Last name must contain only symbols.' : ''">
+            </app-error-message>
+        </div>
+
+        <div class="input-container input-group">
+            <div class="input-container input-half-width">
+                <label for="email">Email</label>
+                <div class="example-input input-max-width"
+                [ngClass]="{'brd-red':  formValidationService.checkBaseValue(userForm, 'firstName') != 0}">
+                    <input type="email" id="email" class="input-max-width" name="email"
+                        [(ngModel)]="userUpdateData.email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                </div>
+                <app-error-message
+                [errorMessage]="formValidationService.checkBaseValue(userForm, 'email') === 1 ? 'Email is required.' : ''">
+              </app-error-message>
+              <app-error-message
+                [errorMessage]="formValidationService.checkBaseValue(userForm, 'email') === 3 ? 'Invalid Email' : ''">
+              </app-error-message>
+            </div>
+
+            <div class="input-container">
+                <label for="userStatus">User Status</label>
+                <div class="example-input input-max-width" 
+                     [ngClass]="{'brd-red': formValidationService.checkBaseValue(userForm, 'userStatus') !== 0}">
+                  <select name="userStatus" [(ngModel)]="userUpdateData.status" class="input-max-width" required>
+                    <option value="" disabled selected>Select status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Pending">Pending</option>
+                  </select>
+                </div>
+                <app-error-message
+                  [errorMessage]="formValidationService.checkBaseValue(userForm, 'userStatus') === 1 ? 'User status is required.' : ''">
+                </app-error-message>
+              </div>
+        </div>
+
+        <div>
+            <label for="roles">Roles</label>
+            <div class="roles-area">
+                <div class="roles" *ngIf="userUpdateData.roles.length">
+                    <div class="role" *ngFor="let role of userUpdateData.roles">
+                        <p>{{ role }}</p>
+                        <i class="fa-solid fa-x fa-2xs" (click)="removeRole(role)"></i>
+                    </div>
+                </div>
+                <div class="example-input roles-input">
+                    <input type="text" placeholder="Add More" #roleInput (keyup)="onKeyUp($event, roleInput)">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="btn-area">
+            <button type="button" mat-raised-button (click)="onCancel()">Cancel</button>
+            <button type="submit" mat-raised-button [disabled]="!userForm.form.valid">Save</button>
+        </div>
+    </form>
+</section>
