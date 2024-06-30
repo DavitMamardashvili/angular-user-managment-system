@@ -24,7 +24,7 @@ export class FormValidationService {
       return ValidationTypes.empty;
     } else if (password?.errors?.['pattern']) {
       return ValidationTypes.patternValidation;
-    }else if (password.value.length < 4) {
+    }else if (password.value.length < 8) {
       return ValidationTypes.symbolsCount;
     }  else if (secondPasswordName != undefined) {
       let secondPassword = form.controls[secondPasswordName];

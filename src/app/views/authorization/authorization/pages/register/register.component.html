@@ -1,0 +1,66 @@
+<section>
+    <article>
+        <h2>Register</h2>
+        <hr class="custom-hr">
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+
+            <label>Username</label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput placeholder="username" ngModel name="username" required>
+            </mat-form-field>
+            <app-error-message *ngIf="formValidationService.checkBaseValue(form, 'username') == 1"
+            [errorMessage]="'Username is required'">
+        </app-error-message>
+
+            <label>Password</label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" ngModel name="password" required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d_-]{8,}$">
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" type="button">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <app-error-message *ngIf="formValidationService.checkInputValue(form, 'password') == 1"
+            [errorMessage]="'Password is required'">
+        </app-error-message>
+        <app-error-message *ngIf="formValidationService.checkInputValue(form, 'password') == 2"
+            [errorMessage]="'Password must be at least 8 characters long'">
+        </app-error-message>
+        <app-error-message *ngIf="formValidationService.checkInputValue(form, 'password') == 3"
+            [errorMessage]="'Password must contain uppercase, lowercase letters, and numbers'">
+        </app-error-message>
+
+            <label>Confirm Password</label>
+            <mat-form-field class="example-full-width">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="confirmPassword ? 'password' : 'text'" ngModel name="confirmPassword" required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d_-]{8,}$">
+                <button mat-icon-button matSuffix (click)="confirmPassword = !confirmPassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirmPassword" type="button">
+                    <mat-icon>{{confirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <app-error-message *ngIf="formValidationService.checkInputValue(form, 'confirmPassword') == 1"
+                [errorMessage]="'Password is required'">
+            </app-error-message>
+            <app-error-message *ngIf="formValidationService.checkInputValue(form, 'confirmPassword') == 2"
+                [errorMessage]="'Password must be at least 8 characters long'">
+            </app-error-message>
+            <app-error-message *ngIf="formValidationService.checkInputValue(form, 'confirmPassword') == 3"
+                [errorMessage]="'Password must contain uppercase, lowercase letters, and numbers'">
+            </app-error-message>
+            <app-error-message *ngIf="formValidationService.checkInputValue(form, 'confirmPassword', 'password') == 4"
+                [errorMessage]="'Passwords do not match'">
+            </app-error-message>
+
+            <button type="submit" mat-raised-button class="mt-4 example-full-width">Sign In</button>
+
+            <div class="btn-area">
+                <a mat-button routerLink="/auth/sign-in">Go To Autorization</a>
+            </div>
+        </form>
+    </article>
+</section>

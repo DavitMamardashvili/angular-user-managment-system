@@ -38,7 +38,7 @@
             <div class="input-container input-half-width">
                 <label for="email">Email</label>
                 <div class="example-input input-max-width"
-                [ngClass]="{'brd-red':  formValidationService.checkBaseValue(userForm, 'firstName') != 0}">
+                [ngClass]="{'brd-red':  formValidationService.checkBaseValue(userForm, 'email') != 0}">
                     <input type="email" id="email" class="input-max-width" name="email"
                         [(ngModel)]="userUpdateData.email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                 </div>
