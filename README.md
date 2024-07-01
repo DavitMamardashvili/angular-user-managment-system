@@ -13,8 +13,7 @@ The motivation behind AngularToDoListApp was to develop a practical and user-fri
 - **Real-time Updates**: Immediate reflection of changes across different components using Angular services.
 
 ## LIVE DEMO
-
-![home](https://your-demo-url.com)
+![Screenshot_39](https://github.com/DavitMamardashvili/angular-user-managment-system/assets/133438090/b7b87292-ba8c-4f88-8194-879f778f7879)
 
 Replace `https://your-demo-url.com` with the actual URL of your live demo or screenshot showcasing the AngularToDoListApp.
 
