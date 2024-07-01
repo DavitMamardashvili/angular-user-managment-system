@@ -8,7 +8,7 @@ The motivation behind AngularToDoListApp was to develop a practical and user-fri
 
 ## Features
 
-- **Task Management**: Create, update, delete, and mark tasks as complete.
+- **Task Management**: Create, update, delete, read.
 - **User Authentication**: Secure login and registration system.
 - **Real-time Updates**: Immediate reflection of changes across different components using Angular services.
 
@@ -83,10 +83,10 @@ Follow these steps to set up AngularToDoListApp locally:
 
 ## Usage
 
-- **Creating Tasks**: Add new tasks with titles and descriptions.
-- **Updating Tasks**: Modify existing task details.
-- **Deleting Tasks**: Remove tasks that are no longer needed.
-- **Completing Tasks**: Mark tasks as complete to track progress.
+- **Creating User**: Add new tasks with titles and descriptions.
+- **Updating User**: Modify existing task details.
+- **Deleting User**: Remove tasks that are no longer needed.
+- **Completing User**: Mark tasks as complete to track progress.
 
 ## Contributing
 
