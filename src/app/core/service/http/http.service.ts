@@ -2,33 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../../views/home/home/models/createUser';
+import { environment } from '../../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  private apiUrl = ''; 
 
   constructor(private http: HttpClient) { }
 
-  createItem(user: User): Observable<User> {
-    return this.http.post<User>(`https://localhost:7157/api/User/AddUser`, user);
+  createItem(url:string ,user: any): Observable<User> {
+    return this.http.post<User>(`${environment.baseApiUrl}/${url}`, user);
   }
-  getItems(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:7157/api/User/GetAllUsers');
-  }
-
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  getItems(url:string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.baseApiUrl}/${url}`);
   }
 
-  updateItem( item: any): Observable<any> {
-    return this.http.put(`${'https://localhost:7157/api/User'}/${item.id}`, item);
+  getItem(url:string ,id: number): Observable<any> {
+    return this.http.get<any>(`${environment.baseApiUrl}/${url}/${id}`);
   }
 
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`https://localhost:7157/api/User/${id}`);
+  updateItem( url:string, item: any): Observable<any> {
+    return this.http.put(`${environment.baseApiUrl}/${url}/${item.id}`, item);
+  }
+
+  deleteItem(url:string ,id: number): Observable<any> {
+    return this.http.delete(`${environment.baseApiUrl}/${url}/${id}`);
   }
 }
 

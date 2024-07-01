@@ -3,6 +3,10 @@ import { FormValidationService } from '../../../../../core/service/validations/f
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UserAuth } from '../../models/autorization';
+import { HttpService } from '../../../../../core/service/http/http.service';
+import { response } from 'express';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessAlertComponent } from '../../../../../shared/alerts/success-alert/success-alert.component';
 
 @Component({
   selector: 'app-register',
@@ -12,18 +16,20 @@ import { UserAuth } from '../../models/autorization';
 export class RegisterComponent {
   hidePassword = true;
   confirmPassword = true;
-  constructor(public formValidationService: FormValidationService ,private http: HttpClient) { }
+  constructor(public formValidationService: FormValidationService, private http: HttpService , private dialog: MatDialog) { }
 
-  onFormSubmit(form: NgForm) { 
+  onFormSubmit(form: NgForm) {
     if (!form.valid || form.value.password !== form.value.confirmPassword) {
-      return; 
+      return;
     }
 
     let request = new UserAuth(form.value)
 
-    console.log(request)
-
-    this.http.post("https://localhost:7157/api/Auth/register",request).subscribe(resp => console.log(resp))
+    this.http.createItem("Auth/register", request).subscribe(response => {
+      if(response){
+        this.dialog.open(SuccessAlertComponent);
+      }
+    })
 
   }
 }

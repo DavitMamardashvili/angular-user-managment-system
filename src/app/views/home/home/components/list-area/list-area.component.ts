@@ -40,8 +40,8 @@ export class ListAreaComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   loadData(): void {
-    this.http.getItems().pipe(
-      switchMap(() => this.http.getItems())
+    this.http.getItems('User/GetAllUsers').pipe(
+      switchMap(() => this.http.getItems('User/GetAllUsers'))
     ).subscribe(response => {
       this.dataSource.data = response;
       this.dataSource.paginator = this.paginator;

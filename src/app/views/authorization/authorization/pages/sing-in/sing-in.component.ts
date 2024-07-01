@@ -5,6 +5,7 @@ import { UserAuth } from '../../models/autorization';
 import { HttpClient } from '@angular/common/http';
 import { UserStateManagmentService } from '../../../../../core/service/state-manager/user-state-managment.service';
 import { Router } from '@angular/router';
+import { HttpService } from '../../../../../core/service/http/http.service';
 
 @Component({
   selector: 'app-sing-in',
@@ -16,8 +17,8 @@ export class SingInComponent {
 
   constructor(
     public formValidationService: FormValidationService, 
-    private http: HttpClient, 
-    private userStateManagmentService: UserStateManagmentService,
+    private http: HttpService,
+        private userStateManagmentService: UserStateManagmentService,
     private router: Router  
   ) { }
 
@@ -28,7 +29,7 @@ export class SingInComponent {
 
     let request = new UserAuth(form.value);
 
-    this.http.post("https://localhost:7157/api/Auth/login", request).subscribe((response: any) => {
+    this.http.createItem("Auth/login", request).subscribe((response: any) => {
       this.userStateManagmentService.setToken(response.jwt);
       this.router.navigate(['/home']); 
     });

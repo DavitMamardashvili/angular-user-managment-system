@@ -11,7 +11,7 @@ import { noAuthGuard } from '../core/service/guards/no-auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/sign-in', // Redirect to sign-in by default
+    redirectTo: 'auth/sign-in', 
     pathMatch: 'full'
   },
   {
@@ -29,7 +29,6 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate:[noAuthGuard],
   },
-  // Other routes
 ];
 
 @NgModule({

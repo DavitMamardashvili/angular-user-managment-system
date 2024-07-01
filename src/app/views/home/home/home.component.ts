@@ -19,11 +19,11 @@ export class HomeComponent {
 
   addUser(user: User) {
     if (user.id === 0) {
-      this.http.createItem(user).subscribe(() => {
+      this.http.createItem('User/AddUser',user).subscribe(() => {
         this.listAreaComponent.itemIsAddOtUpdate();
       });
     } else {
-      this.http.updateItem(user).subscribe(() => {
+      this.http.updateItem('User/UpdateUser',user).subscribe(() => {
         this.listAreaComponent.itemIsAddOtUpdate();
       });
     }
@@ -32,7 +32,7 @@ export class HomeComponent {
   }
 
   deleteUser(id: number) {
-    this.http.deleteItem(id).subscribe(() => {
+    this.http.deleteItem('User/DeleteUser', id).subscribe(() => {
       this.listAreaComponent.itemIsAddOtUpdate();
     });
   }

@@ -1,0 +1,44 @@
+.success-dialog-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0fff0; /* Light green background */
+    border-radius: 8px;
+  }
+  
+  .success-dialog-title {
+    color: #4caf50; /* Green color */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .success-dialog-content {
+    font-size: 18px;
+    color: #333; /* Dark text color */
+    margin-bottom: 20px;
+  }
+  
+  .success-dialog-message {
+    margin: 0;
+  }
+  
+  .success-dialog-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .success-dialog-button {
+    background-color: #4caf50; /* Green button */
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  .success-dialog-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+
+  
